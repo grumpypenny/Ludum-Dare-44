@@ -19,7 +19,6 @@ public class Health : MonoBehaviour, IHealth
 
 	public void TakeDamage(float amount)
 	{
-		print(gameObject.name + " has taken " + amount + " damage");
 		hp -= amount;
 
 		if (hp <= 0 && !isDead){

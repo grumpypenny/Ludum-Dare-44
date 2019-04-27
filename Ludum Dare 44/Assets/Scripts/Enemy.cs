@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Health))]
+[RequireComponent(typeof(VilligerAnim))]
 public class Enemy : MonoBehaviour
 {
 	[Header("Attack Variables")]
@@ -10,15 +12,20 @@ public class Enemy : MonoBehaviour
 
 	private float timeOfNextAttack = 0;
 
+	private Health health;
+	private VilligerAnim anim;
+
 	private void Start()
 	{
+		health = GetComponent<Health>();
+		anim = GetComponent<VilligerAnim>();
 		timeOfNextAttack = 0;
 	}
 
 
 	public void Attack(GameObject target)
 	{
-		if (target == this.gameObject)
+		if (target == this.gameObject || health.isDead)
 		{
 			return;
 		}
@@ -28,6 +35,7 @@ public class Enemy : MonoBehaviour
 		{
 			targetHP.TakeDamage(damage);
 			timeOfNextAttack = Time.time + timeBetweenAttacks;
+			anim.Attack();
 		}
 	}
 }

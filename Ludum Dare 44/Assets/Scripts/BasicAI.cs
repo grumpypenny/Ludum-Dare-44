@@ -21,7 +21,6 @@ public class BasicAI : MonoBehaviour
 	public LayerMask TargetMask;
 
 	private GameObject destination;
-	private bool moving = false;
 	private Enemy self;
 	/*
 	 * This script goes on the child of an agent
@@ -43,16 +42,20 @@ public class BasicAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		// reset transform to normal
-		transform.eulerAngles = new Vector3(0, 0, 0);
+		//transform.LookAt(agent.destination);
+
 		// Set the destination
 		if (destination == null)
 		{
 			UpdateDestination();
 		}
 		Move(destination.transform.position);
-		Debug.DrawLine(cam.transform.position, destination.transform.position);
 
+
+		// reset transform to normal
+		//transform.eulerAngles = Vector3.Scale(transform.eulerAngles, new Vector3(0, 0, 1));
+		transform.rotation = Quaternion.FromToRotation(Vector3.up, -(transform.position - destination.transform.position));
+		Debug.DrawLine(cam.transform.position, destination.transform.position, Color.red);
 	}
 
 	private void Move(Vector2 t)
@@ -60,14 +63,12 @@ public class BasicAI : MonoBehaviour
 		// move to random target
 		UpdateTargetList();
 
-		if (((Vector2)transform.position - t).magnitude > distance && !moving)
+		if (((Vector2)transform.position - t).magnitude > distance)
 		{
 			agent.SetDestination(t);
-			moving = true;
 		}
 		else
 		{
-			moving = false;
 			self.Attack(destination);
 		}
 	}
