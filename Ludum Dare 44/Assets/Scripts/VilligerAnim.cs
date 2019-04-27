@@ -35,6 +35,6 @@ public class VilligerAnim : MonoBehaviour
 
 	public void Die()
 	{
-
+		anim.SetTrigger("dead");
 	}
 }

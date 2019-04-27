@@ -7,6 +7,11 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Health))]
 public class BasicAI : MonoBehaviour
 {
+	[Header ("Debug")]
+	public Color colour = Color.red;
+
+	[Space]
+
 	[Header("Movement")]
 	public NavMeshAgent agent;
 	public Camera cam;
@@ -55,7 +60,7 @@ public class BasicAI : MonoBehaviour
 		// reset transform to normal
 		//transform.eulerAngles = Vector3.Scale(transform.eulerAngles, new Vector3(0, 0, 1));
 		transform.rotation = Quaternion.FromToRotation(Vector3.up, -(transform.position - destination.transform.position));
-		Debug.DrawLine(cam.transform.position, destination.transform.position, Color.red);
+		Debug.DrawLine(transform.position, destination.transform.position, colour);
 	}
 
 	private void Move(Vector2 t)
@@ -76,7 +81,7 @@ public class BasicAI : MonoBehaviour
 	private void UpdateDestination()
 	{
 		UpdateTargetList();
-		if (targets.Count > 0)
+		if (targets.Count >= 0)
 		{
 			int r = Random.Range(0, targets.Count);
 			destination = targets[r].gameObject;

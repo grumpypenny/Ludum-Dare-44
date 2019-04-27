@@ -31,6 +31,13 @@ public class Enemy : MonoBehaviour
 		}
 
 		IHealth targetHP = target.GetComponent<IHealth>();
+
+		if (targetHP == null)
+		{
+			// search in children too
+			targetHP = target.GetComponentInChildren<IHealth>();
+		}
+
 		if (targetHP != null && Time.time > timeOfNextAttack)
 		{
 			targetHP.TakeDamage(damage);
