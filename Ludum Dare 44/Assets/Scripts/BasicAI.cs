@@ -1,15 +1,28 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(Enemy))]
+[RequireComponent(typeof(Health))]
 public class BasicAI : MonoBehaviour
 {
+	[Header("Movement")]
 	public NavMeshAgent agent;
-
 	public Camera cam;
-
-	public float difference = 2.0f;
 	public float speed;
+	public float distance = 1.0f;
 
+	[Space]
+
+	[Header("Navigation")]
+	public List<Transform> targets = new List<Transform>();
+	public float radius = 15.0f;
+	public LayerMask TargetMask;
+
+	private GameObject destination;
+	private bool moving = false;
+	private Enemy self;
 	/*
 	 * This script goes on the child of an agent
 	 */
@@ -22,17 +35,70 @@ public class BasicAI : MonoBehaviour
 		{
 			speed = agent.speed;
 		}
-    }
+		UpdateTargetList();
+
+		self = GetComponent<Enemy>();
+	}
 
     // Update is called once per frame
     void Update()
     {
 		// reset transform to normal
 		transform.eulerAngles = new Vector3(0, 0, 0);
-		Move();
-    }
+		// Set the destination
+		if (destination == null)
+		{
+			UpdateDestination();
+		}
+		Move(destination.transform.position);
+		Debug.DrawLine(cam.transform.position, destination.transform.position);
 
-	private void Move()
+	}
+
+	private void Move(Vector2 t)
+	{
+		// move to random target
+		UpdateTargetList();
+
+		if (((Vector2)transform.position - t).magnitude > distance && !moving)
+		{
+			agent.SetDestination(t);
+			moving = true;
+		}
+		else
+		{
+			moving = false;
+			self.Attack(destination);
+		}
+	}
+
+	private void UpdateDestination()
+	{
+		UpdateTargetList();
+		if (targets.Count > 0)
+		{
+			int r = Random.Range(0, targets.Count);
+			destination = targets[r].gameObject;
+		} else
+		{
+			destination = this.gameObject;
+		}
+	}
+
+	private void UpdateTargetList()
+	{
+		targets.Clear();
+		Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius, TargetMask);
+
+		for (int i = 0; i < colliders.Length; i++)
+		{
+			targets.Add(colliders[i].transform);
+		}
+	}
+
+	#region MovementTest
+
+	private void MoveToClick()
 	{
 		if (Input.GetMouseButtonDown(0))
 		{
@@ -45,4 +111,7 @@ public class BasicAI : MonoBehaviour
 			}
 		}
 	}
+	#endregion
+
+
 }
