@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(VilligerAnim))]
 public class Health : MonoBehaviour, IHealth
 {
 	protected float hp;
 
 	public float startingHP = 100f;
-
+	public bool spawnBlood = false;
 	public bool isDead = false;
 	public float lifeTime = 3.0f;
-
+	public GameObject blood;
 	private VilligerAnim anim;
 
 	private void Start()
@@ -38,6 +37,12 @@ public class Health : MonoBehaviour, IHealth
 		{
 			anim.Die();
 		}
+
+		if (spawnBlood)
+		{
+			Instantiate(blood, transform.position, new Quaternion(0,0,0,0));
+		}
+
 		Destroy(gameObject, lifeTime);
 		if (transform.parent != null)
 		{

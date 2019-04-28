@@ -181,8 +181,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHP: 25
+  spawnBlood: 0
   isDead: 0
   lifeTime: 2
+  blood: {fileID: 1196957975685845147, guid: ad7cde3b8a13f984db71c3c044eede65, type: 3}
 --- !u!212 &6535084189954965324
 SpriteRenderer:
   m_ObjectHideFlags: 0
