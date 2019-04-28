@@ -41,7 +41,7 @@ public class Health : MonoBehaviour, IHealth
 		Destroy(gameObject, lifeTime);
 		if (transform.parent != null)
 		{
-			Destroy(transform.parent.gameObject, lifeTime + 0.1f);
+			Destroy(transform.parent.gameObject, lifeTime);
 		}
 	}
 }

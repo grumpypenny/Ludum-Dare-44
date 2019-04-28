@@ -81,7 +81,7 @@ public class BasicAI : MonoBehaviour
 	private void UpdateDestination()
 	{
 		UpdateTargetList();
-		if (targets.Count >= 0)
+		if (targets.Count > 0)
 		{
 			int r = Random.Range(0, targets.Count);
 			destination = targets[r].gameObject;
@@ -94,7 +94,8 @@ public class BasicAI : MonoBehaviour
 	private void UpdateTargetList()
 	{
 		targets.Clear();
-		Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius, TargetMask);
+
+		Collider[] colliders = Physics.OverlapSphere(transform.position, radius, TargetMask);
 
 		for (int i = 0; i < colliders.Length; i++)
 		{

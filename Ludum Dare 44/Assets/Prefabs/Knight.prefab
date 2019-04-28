@@ -150,7 +150,7 @@ MonoBehaviour:
   speed: 0
   distance: 1.5
   targets: []
-  radius: 15
+  radius: 80
   TargetMask:
     serializedVersion: 2
     m_Bits: 512
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHP: 25
   isDead: 0
-  lifeTime: 3
+  lifeTime: 2
 --- !u!212 &6535084189954965324
 SpriteRenderer:
   m_ObjectHideFlags: 0

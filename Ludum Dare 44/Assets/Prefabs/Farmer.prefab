@@ -131,7 +131,7 @@ MeshCollider:
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!95 &5075585149796546125
 Animator:
   serializedVersion: 3
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHP: 10
   isDead: 0
-  lifeTime: 3
+  lifeTime: 2
 --- !u!114 &5075585149796546130
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,12 +205,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bd4d23a983392e4781ff2234b5e0626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colour: {r: 1, g: 0, b: 0, a: 1}
   agent: {fileID: 5075585148346505966}
   cam: {fileID: 0}
   speed: 0
   distance: 2
   targets: []
-  radius: 15
+  radius: 80
   TargetMask:
     serializedVersion: 2
     m_Bits: 256
