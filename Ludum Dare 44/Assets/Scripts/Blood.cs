@@ -17,14 +17,17 @@ public class Blood : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if ((transform.position - necro.transform.position).sqrMagnitude > 1)
+		if (necro != null)
 		{
-			transform.Translate((necro.transform.position - transform.position).normalized * Time.deltaTime);
-		}
-		else
-		{
-			necro.GetComponent<NecroHealth>().IncreaseHealth(hpBoost);
-			Destroy(gameObject);
+			if ((transform.position - necro.transform.position).sqrMagnitude > 1)
+			{
+				transform.Translate((necro.transform.position - transform.position).normalized * Time.deltaTime);
+			}
+			else
+			{
+				necro.GetComponent<NecroHealth>().IncreaseHealth(hpBoost);
+				Destroy(gameObject);
+			}
 		}
     }
 }

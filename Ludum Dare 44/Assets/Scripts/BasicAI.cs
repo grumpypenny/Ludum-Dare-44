@@ -50,7 +50,7 @@ public class BasicAI : MonoBehaviour
 		//transform.LookAt(agent.destination);
 
 		// Set the destination
-		if (destination == null)
+		if (destination == null || destination == this.gameObject)
 		{
 			UpdateDestination();
 		}

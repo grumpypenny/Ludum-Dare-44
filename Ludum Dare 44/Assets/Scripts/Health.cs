@@ -19,6 +19,10 @@ public class Health : MonoBehaviour, IHealth
 		anim = GetComponent<VilligerAnim>();
 	}
 
+	public float GetHP()
+	{
+		return hp;
+	}
 
 	public void TakeDamage(float amount)
 	{
@@ -43,7 +47,6 @@ public class Health : MonoBehaviour, IHealth
 			Instantiate(blood, transform.position, new Quaternion(0,0,0,0));
 		}
 
-		Destroy(gameObject, lifeTime);
 		if (transform.parent != null)
 		{
 			Destroy(transform.parent.gameObject, lifeTime);
