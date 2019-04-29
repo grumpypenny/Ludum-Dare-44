@@ -5,11 +5,17 @@ using UnityEngine.UI;
 
 public class NecroHealth : Health
 {
+	public float healthPenalty = 1;
 	public Slider hpSlider;
+
+	private void FixedUpdate()
+	{
+		hp -= healthPenalty * Time.fixedDeltaTime;
+	}
 
 	public void IncreaseHealth(int amount)
 	{
-		if (hp >= 0 && !isDead)
+		if (hp >= 0 && !isDead && hp < startingHP)
 		{
 			hp += amount;
 		}

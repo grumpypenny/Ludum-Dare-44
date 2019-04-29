@@ -56,7 +56,6 @@ public class BasicAI : MonoBehaviour
 		}
 		Move(destination.transform.position);
 
-
 		// reset transform to normal
 		//transform.eulerAngles = Vector3.Scale(transform.eulerAngles, new Vector3(0, 0, 1));
 		transform.rotation = Quaternion.FromToRotation(Vector3.up, -(transform.position - destination.transform.position));

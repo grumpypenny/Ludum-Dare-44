@@ -21,6 +21,8 @@ public class LifeBuy : MonoBehaviour
 	public float warriorCost = 200f;
 	public GameObject SkeletonMage;
 	public float mageCost = 350f;
+	public GameObject Graveyard;
+	public float graveCost;
 
 	[HideInInspector]
 	public bool stillSelecting = false;
@@ -29,12 +31,6 @@ public class LifeBuy : MonoBehaviour
     void Start()
     {
 		health = FindObjectOfType<NecroHealth>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
 	public void BuySkeletonWarrior()
@@ -57,6 +53,16 @@ public class LifeBuy : MonoBehaviour
 		}
 	}
 
+	public void BuyGraveYard()
+	{
+		if (health.GetHP() > mageCost + 1)
+		{
+			// Instanciate Graveyard
+			SpawnOnClick(Graveyard);
+			health.TakeDamage(graveCost);
+		}
+	}
+
 	private void SpawnOnClick(GameObject @object)
 	{
 		ClosePanel();
@@ -69,12 +75,14 @@ public class LifeBuy : MonoBehaviour
 	public void ClosePanel()
 	{
 		panel.SetActive(false);
+		instructionText.text = "";
 	}
 
 	public void OpenPanel()
 	{
 		stillSelecting = true;
 		panel.SetActive(true);
+		instructionText.text = "Next wave";
 	}
 
 	public void ConfirmEndSelection()

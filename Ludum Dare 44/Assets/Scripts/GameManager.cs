@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
 	{
 		// Spawn asset number of times equal to out put of function
 		// Enemies[0] is the easiest while Enemies[n] is the hardest
+		necroMancer.healthPenalty = wave;
 		for (int i = 0; i < Enemies.Length; i++)
 		{
 			SpawnThing(i, wave);

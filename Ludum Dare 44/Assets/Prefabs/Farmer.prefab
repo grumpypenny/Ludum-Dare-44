@@ -179,7 +179,7 @@ MonoBehaviour:
   startingHP: 10
   spawnBlood: 1
   isDead: 0
-  lifeTime: 5
+  lifeTime: 2
   blood: {fileID: 1196957975685845147, guid: ad7cde3b8a13f984db71c3c044eede65, type: 3}
 --- !u!114 &5075585149796546130
 MonoBehaviour:
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85064c6a904e5ae41a160102414fd8d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
+  damage: 20
   timeBetweenAttacks: 1
 --- !u!114 &5075585149796546129
 MonoBehaviour:

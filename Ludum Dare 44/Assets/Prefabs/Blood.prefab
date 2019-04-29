@@ -93,4 +93,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   necro: {fileID: 0}
-  hpBoost: 50
+  hpBoost: 100

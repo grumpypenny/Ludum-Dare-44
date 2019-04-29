@@ -12,11 +12,13 @@ public class Health : MonoBehaviour, IHealth
 	public float lifeTime = 3.0f;
 	public GameObject blood;
 	private VilligerAnim anim;
+	private SpriteRenderer sprite;
 
 	private void Start()
 	{
 		hp = startingHP;
 		anim = GetComponent<VilligerAnim>();
+		sprite = GetComponent<SpriteRenderer>();
 	}
 
 	public float GetHP()
@@ -27,6 +29,8 @@ public class Health : MonoBehaviour, IHealth
 	public void TakeDamage(float amount)
 	{
 		hp -= amount;
+		sprite.color = Color.red;
+		StartCoroutine(Flash());
 
 		if (hp <= 0 && !isDead){
 			Die();
@@ -51,5 +55,12 @@ public class Health : MonoBehaviour, IHealth
 		{
 			Destroy(transform.parent.gameObject, lifeTime);
 		}
+	}
+
+	private IEnumerator Flash()
+	{
+		yield return new WaitForSeconds(0.1f);
+		sprite.color = Color.white;
+		StopCoroutine(Flash());
 	}
 }

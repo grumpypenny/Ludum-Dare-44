@@ -107,11 +107,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbffc4d438839f549b2ffcdfe86b9c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHP: 1000
+  startingHP: 2000
   spawnBlood: 0
   isDead: 0
   lifeTime: 3
   blood: {fileID: 0}
+  healthPenalty: 1
   hpSlider: {fileID: 0}
 --- !u!114 &1138040525
 MonoBehaviour:
@@ -130,10 +131,14 @@ MonoBehaviour:
   instructionText: {fileID: 0}
   SkeletonWarrior: {fileID: 6535084189533813273, guid: 81bdd53a399fe3243b8640b477fc30a7,
     type: 3}
-  warriorCost: 200
+  warriorCost: 50
   SkeletonMage: {fileID: 4318020159899357024, guid: 0b987d48f1c91c54e9b26c64410d37cd,
     type: 3}
-  mageCost: 350
+  mageCost: 450
+  Graveyard: {fileID: 4980207656488346074, guid: 177d85af868c3a04abe2db3788dea086,
+    type: 3}
+  graveCost: 200
+  stillSelecting: 0
 --- !u!1 &363549623161196489
 GameObject:
   m_ObjectHideFlags: 0

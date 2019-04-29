@@ -195,8 +195,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 733af305a62524e4e9068cef51b165a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHP: 50
+  startingHP: 60
   spawnBlood: 0
   isDead: 0
-  lifeTime: 3
+  lifeTime: 2
   blood: {fileID: 0}
