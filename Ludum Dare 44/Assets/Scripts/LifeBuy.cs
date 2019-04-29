@@ -55,7 +55,7 @@ public class LifeBuy : MonoBehaviour
 
 	public void BuyGraveYard()
 	{
-		if (health.GetHP() > mageCost + 1)
+		if (health.GetHP() > graveCost + 1)
 		{
 			// Instanciate Graveyard
 			SpawnOnClick(Graveyard);

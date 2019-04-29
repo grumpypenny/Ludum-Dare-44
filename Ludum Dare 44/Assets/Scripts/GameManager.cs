@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 	public GameObject panel;
 	public NecroHealth necroMancer;
 	public TextMeshProUGUI instructionText;
+	public GameObject gameOverMenu;
 
 	[SerializeField]
 	private List<GameObject> currentEnemies = new List<GameObject>();
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+		gameOverMenu.SetActive(false);
 		necroMancer = FindObjectOfType<NecroHealth>();
 		lifeInfo = necroMancer.GetComponent<LifeBuy>();
 		StartCoroutine(GameLoop());
@@ -58,6 +60,8 @@ public class GameManager : MonoBehaviour
 	private void EndGame()
 	{
 		print("you died");
+		panel.SetActive(false);
+		gameOverMenu.SetActive(true);
 	}
 
 	private IEnumerator GameLoop()
@@ -92,6 +96,10 @@ public class GameManager : MonoBehaviour
 	{
 		while (currentEnemies.Count > 0)
 		{
+			if (necroMancer == null || necroMancer.GetHP() < 0)
+			{
+				EndGame();
+			}
 			yield return null;
 		}
 	}

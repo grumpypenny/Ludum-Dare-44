@@ -148,7 +148,7 @@ MonoBehaviour:
   spawnBlood: 1
   isDead: 0
   lifeTime: 2
-  blood: {fileID: 1196957975685845147, guid: ad7cde3b8a13f984db71c3c044eede65, type: 3}
+  blood: {fileID: 1196957975685845147, guid: a6590c9dd26e67946bbe53f892004341, type: 3}
 --- !u!95 &8712315198968845740
 Animator:
   serializedVersion: 3
