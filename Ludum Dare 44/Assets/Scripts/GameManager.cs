@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 	public GameObject panel;
 	public NecroHealth necroMancer;
 	public TextMeshProUGUI instructionText;
+	public TextMeshProUGUI controlsText;
 	public GameObject gameOverMenu;
 
 	[SerializeField]
@@ -33,6 +34,10 @@ public class GameManager : MonoBehaviour
 	private void Update()
 	{
 		currentEnemies.RemoveAll(obj => obj == null);
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			OpenBuildingMenu();
+		}
 	}
 
 	private void SpawnWave(int wave)
@@ -40,6 +45,7 @@ public class GameManager : MonoBehaviour
 		// Spawn asset number of times equal to out put of function
 		// Enemies[0] is the easiest while Enemies[n] is the hardest
 		instructionText.text = "Wave: " + wave;
+		controlsText.text = "press ESC to summon";
 		necroMancer.healthPenalty = wave;
 		for (int i = 0; i < Enemies.Length; i++)
 		{
@@ -62,11 +68,23 @@ public class GameManager : MonoBehaviour
 		print("you died");
 		panel.SetActive(false);
 		gameOverMenu.SetActive(true);
+		instructionText.text = "";
+		controlsText.text = "";
+	}
+
+	private void OpenBuildingMenu()
+	{
+		controlsText.text = "";
+		panel.SetActive(true);
+		lifeInfo.stillSelecting = true;
 	}
 
 	private IEnumerator GameLoop()
 	{
-		yield return StartCoroutine(Picking());
+		if (waveCount == 0)
+		{
+			yield return StartCoroutine(Picking());
+		}
 		SpawnWave(waveCount);
 		waveCount++;
 		yield return StartCoroutine(Fighting());
