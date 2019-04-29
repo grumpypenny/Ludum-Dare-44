@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blood: {fileID: 1196957975685845147, guid: ad7cde3b8a13f984db71c3c044eede65, type: 3}
-  timeBetweenOfferings: 20
+  timeBetweenOfferings: 30
 --- !u!1 &4980207656488346074
 GameObject:
   m_ObjectHideFlags: 0
