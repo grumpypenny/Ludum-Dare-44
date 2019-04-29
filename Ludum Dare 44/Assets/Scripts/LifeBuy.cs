@@ -105,7 +105,6 @@ public class LifeBuy : MonoBehaviour
 				{
 					Instantiate(@object, hit.point, Quaternion.identity);
 
-					instructionText.text = "";
 					OpenPanel();
 					yield break;
 				}

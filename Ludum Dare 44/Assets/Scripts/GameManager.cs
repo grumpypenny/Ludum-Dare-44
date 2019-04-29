@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
 	[Header("Set Up")]
 	public GameObject panel;
 	public NecroHealth necroMancer;
+	public TextMeshProUGUI instructionText;
 
 	[SerializeField]
 	private List<GameObject> currentEnemies = new List<GameObject>();
@@ -28,13 +30,6 @@ public class GameManager : MonoBehaviour
 
 	private void Update()
 	{
-		//foreach (GameObject obj in currentEnemies)
-		//{
-		//	if (obj == null)
-		//	{
-		//		currentEnemies.Remove(obj);
-		//	}
-		//}
 		currentEnemies.RemoveAll(obj => obj == null);
 	}
 
@@ -42,6 +37,7 @@ public class GameManager : MonoBehaviour
 	{
 		// Spawn asset number of times equal to out put of function
 		// Enemies[0] is the easiest while Enemies[n] is the hardest
+		instructionText.text = "Wave: " + wave;
 		necroMancer.healthPenalty = wave;
 		for (int i = 0; i < Enemies.Length; i++)
 		{

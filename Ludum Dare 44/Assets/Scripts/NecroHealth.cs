@@ -8,6 +8,11 @@ public class NecroHealth : Health
 	public float healthPenalty = 1;
 	public Slider hpSlider;
 
+	private void Awake()
+	{
+		hpSlider.maxValue = startingHP;
+	}
+
 	private void FixedUpdate()
 	{
 		hp -= healthPenalty * Time.fixedDeltaTime;
