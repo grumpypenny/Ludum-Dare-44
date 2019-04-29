@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85064c6a904e5ae41a160102414fd8d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 4
   timeBetweenAttacks: 1
 --- !u!114 &6535084189954965327
 MonoBehaviour:
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 733af305a62524e4e9068cef51b165a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHP: 25
+  startingHP: 50
   spawnBlood: 0
   isDead: 0
   lifeTime: 2

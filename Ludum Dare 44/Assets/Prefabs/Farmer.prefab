@@ -179,7 +179,7 @@ MonoBehaviour:
   startingHP: 10
   spawnBlood: 1
   isDead: 0
-  lifeTime: 2
+  lifeTime: 5
   blood: {fileID: 1196957975685845147, guid: ad7cde3b8a13f984db71c3c044eede65, type: 3}
 --- !u!114 &5075585149796546130
 MonoBehaviour:
