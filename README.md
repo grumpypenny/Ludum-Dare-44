@@ -28,7 +28,7 @@ Your health bar is at the top of the screen and it slowly ticks down. You can sp
 2. A grave to slowly regenerate your health over time
 3. A skeleton portal that summons fire balls to protect you
 
-![menu screen](/ReadMe_Images/Main Screen.png)
+![menu screen](/ReadMe_Images/Main_Screen.png)
 
 Each options costs health to summon.
 
@@ -37,3 +37,5 @@ As time goes on you will be attacked by enemies that slowly get more powerful wi
 The game only ends when you lose all your health.
 
 ![in game screenshot](/ReadMe_Images/In_Game.png)
+
+At any time press ESC to re open the menu to summon more things.
